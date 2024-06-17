@@ -1,3 +1,3 @@
-![Project Logo](assets/LogoHolberton.png)
+![Project Logo](./assets/LogoHolberton.png)
 
 Holberton School 
