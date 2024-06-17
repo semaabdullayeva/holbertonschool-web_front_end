@@ -251,7 +251,7 @@
 .header-container{
 display: flex;
 justify-content: space-between;
-}Remove header-logo and header-logo a rules
+}
   
   .header {
     padding: var(--header-padding);
