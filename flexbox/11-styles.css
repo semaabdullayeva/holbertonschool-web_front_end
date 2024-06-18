@@ -528,7 +528,7 @@ flex-wrap: wrap;
 
 .hero-article {
 background-size: 150rem 100rem;
-background-positio: 50% 0;
+background-position: 50% 0;
 }
 .hero-article::before {
 content: '';
