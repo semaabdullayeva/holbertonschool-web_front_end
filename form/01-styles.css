@@ -817,7 +817,7 @@ ul.row {
 }
 
 .post-comments .section-title {
-    font-variant: var(--small-caps);
+    font-variant: small-caps;
 }
 
 /* Basic form
