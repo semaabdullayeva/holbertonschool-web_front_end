@@ -1,0 +1,31 @@
+// 103-sort_list.scss
+
+$list_to_sort: john anna zoe kim felicia carrie;
+
+// Function to sort a list of strings
+@function sort-list($list) {
+  $sorted-list: ();
+  @each $item in $list {
+    $position: null;
+    $i: 0;
+    @each $sorted-item in $sorted-list {
+      @if str-slice($item, 1) < str-slice($sorted-item, 1) {
+        $position: $i;
+        @break;
+      }
+      $i: $i + 1;
+    }
+    @if $position == null {
+      $sorted-list: append($sorted-list, $item);
+    } @else {
+      $sorted-list: join(slice($sorted-list, 1, $position), ($item, slice($sorted-list, $position + 1)));
+    }
+  }
+  @return $sorted-list;
+}
+
+// Sort the list
+$sorted_list: sort-list($list_to_sort);
+
+// Print the sorted list
+@debug $sorted_list;
