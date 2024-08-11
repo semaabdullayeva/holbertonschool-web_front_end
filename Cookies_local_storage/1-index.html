@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Login to the website</h2>
+    <input type="text" id="firstname" name="firstname" placeholder="Firstname">
+    <input type="email" id="email" name="email" placeholder="Email">
+
+    <button onclick="setCookies()">Log me in</button>
+    <h2>Cookies</h2>
+    <button onclick="showCookies()">Show the cookies</button>
+
+    <script>
+        function setCookies() {
+            var firstname = document.getElementById('firstname').value;
+            var email = document.getElementById('email').value;
+
+            var expirationDate = new Date();
+            expirationDate.setTime(expirationDate.getTime() + (10 * 24 * 60 * 60 * 1000)); // 10 days in milliseconds
+            var expires = "expires=" + expirationDate.toUTCString();
+
+            document.cookie = 'firstname=' + encodeURIComponent(firstname) + '; ' + expires + '; path=/';
+            document.cookie = 'email=' + encodeURIComponent(email) + '; ' + expires + '; path=/';
+
+            document.getElementById('firstname').value = '';
+            document.getElementById('email').value = '';
+        }
+
+        function showCookies() {
+            var p = document.createElement('p');
+
+            var cookies = document.cookie.split('; ').map(function (cookie) {
+                return cookie.split('=');
+            });
+
+            var cookiesString = 'Cookies: ';
+            cookies.forEach(function (cookie) {
+                var key = cookie[0];
+                var value = cookie[1] || '';
+                cookiesString += key + '=' + decodeURIComponent(value) + ' ';
+            });
+
+            p.innerHTML = cookiesString;
+
+            document.body.appendChild(p);
+        }
+    </script>
+
+</body>
+
+</html>
